@@ -21,21 +21,26 @@
       <h1>services</h1>
     </div>
     <div class="services-container">
-      <div class="box blue">
-        <i class="fas fa-trophy"></i>
-        <h5>Best Quality</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
-      <div class="box red">
-        <i class="fas fa-plane"></i>
-        <h5>Best Quality</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
-      <div class="box yellow">
-        <i class="fas fa-money-check-alt"></i>
-        <h5>Best Quality</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      </div>
+      <?php
+      $mypods = pods('service');
+      $mypods->find("name ASC");
+      ?>
+
+      <?php while ($mypods->fetch()) : ?>
+        <?php
+        $name = $mypods->field('name');
+        $content = $mypods->field('content');
+        $permalink = $mypods->field('permalink');
+        $icon_class = $mypods->field('icon_class');
+        $border_color = $mypods->field('border_color');
+        ?>
+        <div class="box <?php echo $border_color ?>">
+          <i class="<?php echo $icon_class ?>"></i>
+          <h5><?php echo $name ?></h5>
+          <p><?php echo $content ?></p>
+        </div>
+      <?php endwhile ?>
+
     </div>
   </div>
 </section>
