@@ -141,21 +141,23 @@
         </div>
       </div>
       <div class="info">
-        <div class="info-box">
-          <h4>Graphic Artist - Nike</h4>
-          <span class="date">June 2012 - July 2013</span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-        </div>
-        <div class="info-box">
-          <h4>Graphic Artist - Nike</h4>
-          <span class="date">June 2012 - July 2013</span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-        </div>
-        <div class="info-box">
-          <h4>Graphic Artist - Nike</h4>
-          <span class="date">June 2012 - July 2013</span>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-        </div>
+        <?php
+        $exPods = pods('experience');
+        $exPods->find("start_end_date ASC");
+        ?>
+        <?php while ($exPods->fetch()) : ?>
+          <?php
+          $name = $exPods->field('name');
+          $content = $exPods->field('content');
+          $location = $exPods->field('location');
+          $start_end_date = $exPods->field('start_end_date');
+          ?>
+          <div class="info-box">
+            <h4><?php echo $name; ?> - <?php echo $location; ?></h4>
+            <span class="date"><?php echo $start_end_date ?></span>
+            <p><?php echo $content ?> </p>
+          </div>
+        <?php endwhile ?>
       </div>
     </div>
   </div>
