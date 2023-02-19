@@ -61,6 +61,7 @@
 
         $name = $myPod->field('name');
         $content = $myPod->field('content');
+        $permalink = $myPod->field('permalink');
         $project_url = $myPod->field('project_url');
         $github_url = $myPod->field('github_url');
         $tech_icon_1 = $myPod->field('tech_icon_1');
@@ -70,9 +71,32 @@
         $youtube_url = $myPod->field('youtube_url');
         $type_of_project = $myPod->field('type_of_project');
 
+        $row = $myPod->row();
+        $post_id = $row['ID'];
+        if (!function_exists('get_post_featured_image')) {
+          function get_post_featured_image($post_id, $size)
+          {
+            $return_array = [];
+            $image_id = get_post_thumbnail_id($post_id);
+            $image = wp_get_attachment_image_src($image_id, $size);
+            $image_url = $image[0];
+            $image_alt = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+            $image_post = get_post($image_id);
+            $image_caption = $image_post->post_excerpt;
+            $image_description = $image_post->post_content;
+            $return_array['id'] = $image_id;
+            $return_array['url'] = $image_url;
+            $return_array['alt'] = $image_alt;
+            $return_array['caption'] = $image_caption;
+            $return_array['description'] = $image_description;
+            return $return_array;
+          }
+        }
+        $image_properties = get_post_featured_image($post_id, 'full');
+
       ?>
-        <a href="portfoli/#" class="box image<?php echo $loopIndex + 1 ?>">
-          <div class="image" style="background: url(' https://cdn.dribbble.com/users/107759/screenshots/3775823/angled-down-3.gif' ); height: 100%; width: 100%; background-size: cover ; background-position: center center ; background-repeat: no-repeat ;">
+        <a href="<?php echo $permalink ?>" class="box image<?php echo $loopIndex + 1 ?>">
+          <div class="image" style="background: url('<?php echo $image_properties['url']; ?>' ); height: 100%; width: 100%; background-size: cover ; background-position: center center ; background-repeat: no-repeat ;">
             <div class="hover-bg">
               <div class="title">
                 <div class="text"><?php echo $type_of_project ?></div>
