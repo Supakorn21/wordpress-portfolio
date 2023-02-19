@@ -51,69 +51,39 @@
       <h1>portfolio</h1>
     </div>
     <div class="portfolio-container">
-      <a href="portfoli/#" class="box image1">
-        <div class="image">
-          <div class="hover-bg">
-            <div class="title">
-              <div class="text">Ecommerce</div>
+
+      <?php
+      $myPod = pods('project');
+      $myPod->find("project_url ASC");
+
+      for ($loopIndex = 0; $loopIndex < $myPod->total(); $loopIndex++) {
+        $myPod->fetch();
+
+        $name = $myPod->field('name');
+        $content = $myPod->field('content');
+        $project_url = $myPod->field('project_url');
+        $github_url = $myPod->field('github_url');
+        $tech_icon_1 = $myPod->field('tech_icon_1');
+        $tech_icon_2 = $myPod->field('tech_icon_2');
+        $tech_icon_3 = $myPod->field('tech_icon_3');
+        $tech_icon_4 = $myPod->field('tech_icon_4');
+        $youtube_url = $myPod->field('youtube_url');
+        $type_of_project = $myPod->field('type_of_project');
+
+      ?>
+        <a href="portfoli/#" class="box image<?php echo $loopIndex + 1 ?>">
+          <div class="image" style="background: url(' https://cdn.dribbble.com/users/107759/screenshots/3775823/angled-down-3.gif' ); height: 100%; width: 100%; background-size: cover ; background-position: center center ; background-repeat: no-repeat ;">
+            <div class="hover-bg">
+              <div class="title">
+                <div class="text"><?php echo $type_of_project ?></div>
+              </div>
             </div>
           </div>
-        </div>
-      </a>
-      <a href="portfoli/#" class="box image2">
-        <div class="image">
-          <div class="hover-bg">
-            <div class="title">
-              <div class="text">Ecommerce</div>
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="portfoli/#" class="box image3">
-        <div class="image">
-          <div class="hover-bg">
-            <div class="title">
-              <div class="text">Ecommerce</div>
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="portfoli/#" class="box image4">
-        <div class="image">
-          <div class="hover-bg">
-            <div class="title">
-              <div class="text">Ecommerce</div>
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="portfoli/#" class="box image5">
-        <div class="image">
-          <div class="hover-bg">
-            <div class="title">
-              <div class="text">Ecommerce</div>
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="portfoli/#" class="box image6">
-        <div class="image">
-          <div class="hover-bg">
-            <div class="title">
-              <div class="text">Ecommerce</div>
-            </div>
-          </div>
-        </div>
-      </a>
-      <a href="portfoli/#" class="box image7">
-        <div class="image">
-          <div class="hover-bg">
-            <div class="title">
-              <div class="text">Ecommerce</div>
-            </div>
-          </div>
-        </div>
-      </a>
+        </a>
+      <?php
+      }
+      ?>
+
     </div>
   </div>
 </section>
