@@ -17,10 +17,13 @@ get_header();
                 <div class="content-area">
                     <div class="inside">
                         <?php the_content(); ?>
+                        <?php dynamic_sidebar('left-sidebar'); ?>
+
                     </div>
                     <div class="right-widgets">
-                        <div class="widgets-box">
+                        <div class="widget-box">
 
+                            <?php dynamic_sidebar('right-sidebar'); ?>
                         </div>
                     </div>
                 </div>

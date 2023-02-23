@@ -92,14 +92,39 @@
 #portfolio-projects .blog .content-area .inside {
   width: 70%;
   display: inline-block;
+  padding: 15px;
 }
 #portfolio-projects .blog .content-area .right-widgets {
   width: 30%;
   display: inline-block;
+  padding: 15px;
 }
-#portfolio-projects .blog .content-area .right-widgets .widgets-box {
-  background: grey;
-  height: 100px;
+#portfolio-projects .blog .content-area .right-widgets .widget-box {
+  padding: 15px;
+  margin-bottom: 2rem;
+}
+
+#portfolio-projects .blog .content-area .right-widgets .widget-box h3 {
+  margin: 0 0 2rem;
+}
+
+#portfolio-projects
+  .blog
+  .content-area
+  .right-widgets
+  .widget-box
+  #wp-calender {
+  width: 100%;
+}
+#portfolio-projects
+  .blog
+  .content-area
+  .right-widgets
+  .widget-box
+  .wp-calendar-table
+  caption {
+  width: 100%;
+  margin: 0.8rem 0;
 }
 
 @media only screen and (max-width: 960px) {
