@@ -25,19 +25,26 @@ axios
   .then((response) => {
     let postIds = [];
     postData = response.data;
+    let featuredImgId = [];
     // loop Over all posts get the id of each and push into array
     postData.map((item) => {
       return postIds.push(item.id);
     });
+    postData.map((item) => {
+      return featuredImgId.push({
+        id: item.id,
+        imageId: item.featured_media,
+      });
+    });
 
     let getImage0 = () => {
-      return axios.get("/wp-json/wp/v2/media?parent=" + postIds[0]);
+      return axios.get("/wp-json/wp/v2/media/" + featuredImgId[0].imageId);
     };
     let getImage1 = () => {
-      return axios.get("/wp-json/wp/v2/media?parent=" + postIds[1]);
+      return axios.get("/wp-json/wp/v2/media/" + featuredImgId[1].imageId);
     };
     let getImage2 = () => {
-      return axios.get("/wp-json/wp/v2/media?parent=" + postIds[2]);
+      return axios.get("/wp-json/wp/v2/media/" + featuredImgId[2].imageId);
     };
 
     axios
@@ -47,15 +54,15 @@ axios
           return (
             postImages.push({
               id: postIds[0],
-              image: image0.data[0].media_details.sizes.medium.source_url,
+              image: image0.data.media_details.sizes.medium.source_url,
             }),
             postImages.push({
               id: postIds[1],
-              image: image1.data[0].media_details.sizes.medium.source_url,
+              image: image1.data.media_details.sizes.medium.source_url,
             }),
             postImages.push({
               id: postIds[2],
-              image: image2.data[0].media_details.sizes.medium.source_url,
+              image: image2.data.media_details.sizes.medium.source_url,
             }),
             initApp(response),
             console.log(postImages)
