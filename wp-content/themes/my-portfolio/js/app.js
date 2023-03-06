@@ -11,7 +11,9 @@ console.log(menuBtn[0]);
 /*------------------ Testimonials----------------------- */
 
 import { html, render } from "https://unpkg.com/lit-html?module";
-
+const testimonialsApp = document.getElementById("testimonials-app");
+const spinner = testimonialsApp.querySelector(".spinner");
+const loadingMessage = testimonialsApp.querySelector("h3");
 let postData = [];
 let postImages = [];
 let findImageById = (id) => {
@@ -138,5 +140,10 @@ let initApp = (data) => {
       </div>
     </div>
   </div>`;
-  render(appTemplate(postData), document.getElementById("testimonials-app"));
+  if (
+    render(appTemplate(postData), document.getElementById("testimonials-app"))
+  ) {
+    testimonialsApp.removeChild(spinner);
+    testimonialsApp.removeChild(loadingMessage);
+  }
 };

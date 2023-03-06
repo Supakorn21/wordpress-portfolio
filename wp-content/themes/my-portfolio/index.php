@@ -197,7 +197,10 @@
       <h1>Testimonials</h1>
     </div>
 
-    <div id="testimonials-app"></div>
+    <div id="testimonials-app">
+      <div class="spinner"></div>
+      <h3>Loading</h3>
+    </div>
 
   </div>
 </section>
