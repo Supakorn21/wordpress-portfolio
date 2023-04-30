@@ -56,15 +56,15 @@ axios
           return (
             postImages.push({
               id: postIds[0],
-              image: image0.data.media_details.sizes.medium.source_url,
+              image: image0.data.media_details.sizes.full.source_url,
             }),
             postImages.push({
               id: postIds[1],
-              image: image1.data.media_details.sizes.medium.source_url,
+              image: image1.data.media_details.sizes.full.source_url,
             }),
             postImages.push({
               id: postIds[2],
-              image: image2.data.media_details.sizes.medium.source_url,
+              image: image2.data.media_details.sizes.full.source_url,
             }),
             initApp(response),
             console.log(postImages)

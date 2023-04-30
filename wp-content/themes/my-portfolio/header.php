@@ -3,18 +3,32 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title><?php wp_title(); ?></title>
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?> /css/main.css?counter=<?php echo time(); ?>">
+    <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'); ?>/css/main.css?counter=<?php echo time(); ?>">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
     <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
     <header>
+        <?php
+        function acronym($str, $as_space = array('-'))
+        {
+            $str = str_replace($as_space, ' ', trim($str));
+            $ret = "";
+            foreach (explode(' ', $str) as $word) {
+                if (!empty($word)) {
+                    $ret .= strtoupper($word[0]);
+                }
+            };
+            return $ret;
+        }
+        ?>
         <div class="logo">
-            <a href="/" class="name">JSM
+            <a href="/" class="name"><?php echo acronym(get_bloginfo('name')) ?>
         </div>
         </div>
         <div class="header-menu">

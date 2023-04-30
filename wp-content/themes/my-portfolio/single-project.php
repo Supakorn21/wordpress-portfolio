@@ -60,12 +60,8 @@ $image_properties = get_post_featured_image($post_id, 'full');
             </div>
         </div>
         <?php echo $description ?>
-
-
-
         <div class="technologies">
             <h3>Technologies</h3>
-
             <div class="icons">
                 <div class="icon">
                     <img src="<?php echo $tech_icon_1 ?>">
